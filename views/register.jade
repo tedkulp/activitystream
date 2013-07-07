@@ -1,0 +1,18 @@
+extends outer
+
+block body
+  form(action='/register', method='POST')
+    fieldset
+      legend Register
+      - if ('undefined' !== typeof errors && errors.length)
+        ul#errors
+          - each error in errors
+            li.error= error
+      #login
+        label(for=everyauth.password.loginFormFieldName) Login
+        input(type='text', name=everyauth.password.loginFormFieldName, value=userParams[everyauth.password.loginFormFieldName])
+      #password
+        label(for=everyauth.password.passwordFormFieldName) Password
+        input(type='password', name=everyauth.password.passwordFormFieldName)
+      #submit
+        input.btn(type='submit') Register

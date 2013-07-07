@@ -1,0 +1,6 @@
+div.event.track
+  = user.get('login')
+  = " listened to "
+  a.event-link(href=Track.url)
+    = Track.name + " - " + Track.artist_name
+  span.event-date= " - " + formatTime(Track.created_at)

@@ -1,0 +1,8 @@
+extends outer
+
+block body
+  each event in events
+    if event._type == 'Tweet' || event._type == 'CheckIn' || event._type == 'Track'
+      != partial("types/" + event._type, {object: event, locals: {user: user, formatTime: formatTime}})
+    else
+      pre= event

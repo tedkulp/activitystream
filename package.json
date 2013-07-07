@@ -1,0 +1,33 @@
+{
+  "name": "activitystream",
+  "version": "0.0.1",
+  "author": "Ted Kulp <ted@tedkulp.com>",
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  },
+  "dependencies": {
+    "less-middleware": "0.1.12",
+    "coffee-script": "1.4.0",
+    "connect-coffee-script": "0.x",
+    "bootstrap": "git+https://github.com/twitter/bootstrap.git#v2.3.2",
+    "express": "3.x",
+    "everyauth": "git://github.com/tedkulp/everyauth.git#express3",
+    "jade": "0.x",
+    "mongojs": "0.x",
+    "mongoose": "3.x",
+    "bcrypt": "0.x",
+    "connect-redis": "1.4.x",
+    "flickr": "0.x",
+    "ntwitter": "0.x",
+    "node-foursquare": "0.x",
+    "lastfm": "0.x",
+    "express-partials": "git://github.com/tedkulp/express-partials.git",
+    "moment": "1.x",
+    "twitter-text": "git://github.com/twitter/twitter-text-js.git",
+    "mongoose-schema-extend": "0.x",
+    "underscore": "1.x",
+    "github": "0.x",
+    "underscore": "1.4.4"
+  }
+}

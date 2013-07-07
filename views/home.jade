@@ -1,0 +1,38 @@
+extends outer
+
+block body
+  - if (!everyauth.loggedIn)
+    h2 Not Authenticated
+    #register
+      a(href='/register') Register
+    #password-login
+      a(href='/login', style='border: 0px') Login with Password
+  - else
+    h2 Home
+
+    h3 Services
+
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th Service
+          th(style="width: 20%") Authenticated
+          th(style="width: 20%")
+      tbody
+        - for service in services
+          if service.name
+            tr
+              td #{service.name}
+              if user.services[service.name]
+                td true
+              else
+                td false
+              if user.services[service.name]
+                td
+                  a(href='/disconnect/#{service.name}') Disconnect
+              else
+                td
+                  a(href='/auth/#{service.name}') Connect
+
+    h3
+      a(href='/logout') Logout

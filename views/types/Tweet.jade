@@ -1,0 +1,14 @@
+div.event.tweet
+  = user.get('login') + " "
+  if Tweet.retweet
+    a.event-link(href=Tweet.originalUrl())
+      = Tweet.action
+    = " "
+    a.event-link(href="http://twitter.com/" + Tweet.original_screen_name)
+      = Tweet.original_screen_name
+    = " "
+  else
+    a.event-link(href=Tweet.originalUrl())
+      = Tweet.action
+  != Tweet.linkedText()
+  span.event-date= " - " + formatTime(Tweet.created_at)

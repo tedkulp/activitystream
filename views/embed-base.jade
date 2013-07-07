@@ -1,0 +1,10 @@
+!!!
+html
+  head
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-sanitize.min.js')
+    script(src='/javascripts/embed.js')
+  body
+    div#stream-container.container(ng-app="ngSanitize",ng-controller='EmbedListCtrl')
+      ul
+        li(ng-repeat='event in events',class="{{ event._type }}",ng-bind-html="event.html")
