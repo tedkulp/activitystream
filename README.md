@@ -19,7 +19,7 @@ git clone http://github.com/tedkulp/activitystream.git
 
 ```bash
 gem install heroku
-heroku create example-errbit --stack cedar
+heroku create example-activitystream --stack cedar
 heroku addons:add mongohq:sandbox                  # mongolab:sandbox works too
 heroku addons:add redistogo:nano
 heroku config:add SERVICE_URL="http://$(heroku domains | grep "herokuapp.com")"
@@ -89,4 +89,17 @@ heroku config:add TWITTER_SECRET=1234567890abcdef
 
 ```bash
 git push heroku master
+```
+
+Setup
+-----
+
+  * Visit your new site in your favorite browser
+  * Register a user new account
+  * From the home page, connect to the services you care about
+  * (optional -- still needs to be done) If you're the only person using
+    this instance of Activitystream, you can disable registraton with:
+
+```bash
+heroku config:add DISABLE_REGISTRATION=true
 ```
