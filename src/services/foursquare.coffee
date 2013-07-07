@@ -1,11 +1,16 @@
 ServiceBase = require './base'
 Event = require '../models/event'
 
+if process.env.SERVICE_URL
+  foursquareUrl = process.env.SERVICE_URL + "/auth/foursquare/callback"
+else
+  foursquareUrl = null
+
 config =
   'secrets':
     'clientId': process.env.FOURSQUARE_ID || ''
     'clientSecret': process.env.FOURSQUARE_SECRET || ''
-    'redirectUrl': process.env.FOURSQUARE_REDIRECT_URL || 'http://localhost:5000/auth/foursquare/callback'
+    'redirectUrl': foursquareUrl || process.env.FOURSQUARE_REDIRECT_URL || 'http://localhost:5000/auth/foursquare/callback'
 
 foursquare = require('node-foursquare')(config)
 

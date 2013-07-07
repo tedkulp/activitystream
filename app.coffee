@@ -47,13 +47,11 @@ setupCaller = () ->
 
 pinger = () ->
   service_url = (process.env.SERVICE_URL || 'http://localhost:' + process.env.PORT || 5000) + "/ping"
-  console.log "pinging", service_url
   http.get(service_url, (res) ->
   ).on 'error', (err) ->
     console.log err
 
 setupPinger = () ->
-  pinger()
   setInterval ->
     pinger()
   , 60 * 15 * 1000 # 15 min
