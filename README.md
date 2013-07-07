@@ -97,8 +97,8 @@ Setup
   * Visit your new site in your favorite browser
   * Register a user new account
   * From the home page, connect to the services you care about
-  * (optional -- still needs to be done) If you're the only person using
-    this instance of Activitystream, you can disable registraton with:
+  * (optional) If you're the only person using this instance of
+    Activitystream, you can disable registraton with:
 
 ```bash
 heroku config:add DISABLE_REGISTRATION=true

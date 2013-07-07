@@ -3,8 +3,9 @@ extends outer
 block body
   - if (!everyauth.loggedIn)
     h2 Not Authenticated
-    #register
-      a(href='/register') Register
+    if !disable_registration
+      #register
+        a(href='/register') Register
     #password-login
       a(href='/login', style='border: 0px') Login with Password
   - else

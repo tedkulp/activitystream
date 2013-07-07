@@ -6,7 +6,7 @@ bcrypt = require 'bcrypt'
 class PasswordService extends ServiceBase
   setup: (everyauth) ->
     `var that = this`
-    everyauth.password
+    auth = everyauth.password
       .loginWith('login')
       .getLoginPath('/login')
       .postLoginPath('/login')
@@ -45,8 +45,7 @@ class PasswordService extends ServiceBase
             return promise.fulfill(errors)
 
         promise
-      .getRegisterPath('/register')
-      .postRegisterPath('/register')
+      .loginSuccessRedirect('/')
       .registerView('register.jade')
       # .registerLocals((req, res, done) ->
       #   setTimeout () ->
@@ -75,7 +74,19 @@ class PasswordService extends ServiceBase
           return promise.fulfill(createdUser)
 
         promise
-      .loginSuccessRedirect('/')
       .registerSuccessRedirect('/')
+
+    if !!process.env.DISABLE_REGISTRATION
+      # You can't disable registration in everyauth (see https://github.com/bnoguchi/everyauth/issues/71)
+      # Instead we generate a large random GUID on startup and use that
+      uuid = require('node-uuid')
+      randomPath = uuid.v4() + uuid.v4()
+      auth.getRegisterPath('/' + randomPath)
+        .postRegisterPath('/' + randomPath)
+    else
+      auth.getRegisterPath('/register')
+        .postRegisterPath('/register')
+
+    auth
 
 module.exports = new PasswordService()

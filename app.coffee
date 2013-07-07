@@ -109,6 +109,7 @@ app.get '/', (req, res) =>
   res.render 'home',
     services: services
     user: req.user
+    disable_registration: !!process.env.DISABLE_REGISTRATION
 
 app.param 'login', (req, res, next, id) ->
   User.findUser id, (err, user) ->
