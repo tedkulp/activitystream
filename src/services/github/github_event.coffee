@@ -63,8 +63,12 @@ module.exports = (ParentSchema) ->
         eventObj
       when "DeleteEvent"
         null
+      when "IssuesEvent"
+        null
+      when "CreateEvent"
+        null
       else
-        console.log event
+        console.log "Github - Unhandled Type:", event.type
         null
 
   GithubEvent
