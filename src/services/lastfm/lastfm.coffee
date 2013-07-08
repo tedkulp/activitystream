@@ -1,5 +1,8 @@
-ServiceBase = require './base'
-Event = require '../models/event'
+ServiceBase = require '../base'
+Event = require '../../models/event'
+Track = require './track'
+
+Event.registerEventType('Track', Track)
 
 config =
   api_key: process.env.LASTFM_KEY || ''
@@ -11,6 +14,7 @@ class LastFmService extends ServiceBase
   name: 'lastfm'
   setup: (everyauth) ->
     `var that = this`
+
     everyauth.lastfm
       .appId(config.api_key)
       .appSecret(config.secret)

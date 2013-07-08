@@ -1,5 +1,8 @@
-ServiceBase = require './base'
-Event = require '../models/event'
+ServiceBase = require '../base'
+Event = require '../../models/event'
+Tweet = require './tweet'
+
+Event.registerEventType('Tweet', Tweet)
 
 twitter = require 'ntwitter'
 _       = require 'underscore'
@@ -8,6 +11,7 @@ class TwitterService extends ServiceBase
   name: 'twitter'
   setup: (everyauth) ->
     `var that = this`
+
     everyauth.twitter
       .consumerKey(process.env.TWITTER_KEY)
       .consumerSecret(process.env.TWITTER_SECRET)

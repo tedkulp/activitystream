@@ -11,13 +11,8 @@ EventSchema = mongoose.Schema
 
 Event = mongoose.model 'Event', EventSchema, 'events'
 
-require("fs").readdirSync(__dirname).forEach (file) ->
-  file = file.replace('.coffee', '')
-  unless file == 'event'
-    modelClass = require(__dirname + '/' + file)(EventSchema)
-    name = modelClass.modelName
-
-    Event[name] = modelClass
+Event.registerEventType = (name, modelSchema) ->
+  Event[name] = modelSchema(EventSchema)
 
 Event.getEventType = (name) ->
   Event[name] if Event[name]

@@ -1,5 +1,8 @@
-ServiceBase = require './base'
-Event = require '../models/event'
+ServiceBase = require '../base'
+Event = require '../../models/event'
+FlickrImage = require './flickr_image'
+
+Event.registerEventType('FlickrImage', FlickrImage)
 
 flickr = require('flickr').Flickr
 
@@ -7,6 +10,7 @@ class FlickrService extends ServiceBase
   name: 'flickr'
   setup: (everyauth) ->
     `var that = this`
+
     everyauth.flickr
       .consumerKey(process.env.FLICKR_KEY || '')
       .consumerSecret(process.env.FLICKR_SECRET || '')

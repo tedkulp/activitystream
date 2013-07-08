@@ -1,5 +1,8 @@
-ServiceBase = require './base'
-Event = require '../models/event'
+ServiceBase = require '../base'
+Event = require '../../models/event'
+GithubEvent = require './github_event'
+
+Event.registerEventType('GithubEvent', GithubEvent)
 
 githubApi = require 'github'
 
@@ -7,6 +10,7 @@ class GithubService extends ServiceBase
   name: 'github'
   setup: (everyauth) ->
     `var that = this`
+
     everyauth.github
       .appId(process.env.GITHUB_ID || '')
       .appSecret(process.env.GITHUB_SECRET || '')

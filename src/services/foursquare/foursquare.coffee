@@ -1,5 +1,8 @@
-ServiceBase = require './base'
-Event = require '../models/event'
+ServiceBase = require '../base'
+Event = require '../../models/event'
+CheckIn = require './check_in'
+
+Event.registerEventType('CheckIn', CheckIn)
 
 if process.env.SERVICE_URL
   foursquareUrl = process.env.SERVICE_URL + "/auth/foursquare/callback"
@@ -18,6 +21,7 @@ class FoursquareService extends ServiceBase
   name: 'foursquare'
   setup: (everyauth) ->
     `var that = this`
+
     everyauth.foursquare
       .appId(process.env.FOURSQUARE_ID)
       .appSecret(process.env.FOURSQUARE_SECRET)
