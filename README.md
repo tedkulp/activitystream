@@ -61,6 +61,18 @@ heroku config:add GITHUB_ID=1234567890abcdef
 heroku config:add GITHUB_SECRET=1234567890abcdef
 ```
 
+  * Setup Instagram
+    * *Note*: Instagram is optional. If the INSTAGRAM_ID isn't set,
+      Instagram will not be a active service.
+    * Visit [http://instagram.com/developer/clients/manage/](), create a new
+      application for Activitystream.
+    * Add the keys for your new application to the Heroku config
+
+```bash
+heroku config:add INSTAGRAM_ID=1234567890abcdef
+heroku config:add INSTAGRAM_SECRET=1234567890abcdef
+```
+
   * Setup Last.FM
     * *Note*: Last.FM is optional. If the LASTFM_KEY isn't set,
       Last.FM will not be a active service.
