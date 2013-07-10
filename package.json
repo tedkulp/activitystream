@@ -29,6 +29,7 @@
     "underscore": "1.x",
     "github": "0.x",
     "underscore": "1.4.4",
-    "node-uuid" : "*"
+    "node-uuid": "*",
+    "instagram-node": "0.1.13"
   }
 }
