@@ -20,6 +20,10 @@ mongoose.connect process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || process.
 User = require('./src/models/user')
 Event = require('./src/models/event')
 
+if process.env.AIRBRAKE_API_KEY
+  airbrake = require('airbrake').createClient(process.env.AIRBRAKE_API_KEY)
+  airbrake.handleExceptions()
+
 findUserById = (userId, callback) ->
   User.findOne
     _id: userId
@@ -96,6 +100,8 @@ app.configure () ->
     prefix: '/javascripts'
     bare: true
   app.use express.static(__dirname + "/public")
+  if airbrake
+    app.use(airbrake.expressHandler())
 
   partials.register '.jade', (str, options) ->
     tmpl = null

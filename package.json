@@ -30,6 +30,7 @@
     "github": "0.x",
     "underscore": "1.4.4",
     "node-uuid": "*",
-    "instagram-node": "0.1.13"
+    "instagram-node": "0.1.13",
+    "airbrake": "0.3.1"
   }
 }
